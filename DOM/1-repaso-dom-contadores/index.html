@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contador de etiquetas</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+  <header>
+    <h1 id="titulo">Mi página</h1>
+    <p class="lead">Una página cualquiera para practicar selectores y contenido.</p>
+  </header>
+
+  <main>
+    <h2 id="seccion-html">HTML</h2>
+    <p>El HTML describe la estructura del documento.</p>
+    <p>Los elementos se anidan formando un árbol.</p>
+
+    <h2 id="seccion-css">CSS</h2>
+    <p>El CSS se encarga de la presentación.</p>
+    <ul class="card">
+      <li class="card">Selectores</li>
+      <li class="card">Cascada</li>
+      <li class="card">Herencia</li>
+    </ul>
+
+    <h2 id="seccion-js">JavaScript</h2>
+    <p>El JavaScript añade comportamiento a la página.</p>
+    <div class="card">
+      <a href="https://developer.mozilla.org" target="_blank">MDN</a>
+      <a href="https://developer.mozilla.org/es/docs/Web/API/Document_Object_Model" target="_blank">El DOM</a>
+      <a href="#seccion-js">Volver arriba</a>
+    </div>
+
+    <p id="pie">Visibles <span class="oculto">OCULTO</span> fin</p>
+  </main>
+
+  <section id="panel">
+    <h2>Estadísticas</h2>
+    <div class="fila">Párrafos: <span id="num-p" class="num">?</span></div>
+    <div class="fila">Elementos de lista: <span id="num-li" class="num">?</span></div>
+    <div class="fila">Tarjetas (.card): <span id="num-cards" class="num">?</span></div>
+    <div class="fila">Enlaces: <span id="num-a" class="num">?</span></div>
+    <div class="fila">Enlaces externos (target="_blank"): <span id="num-externos" class="num">?</span></div>
+    <div class="fila">Elementos dentro de &lt;main&gt;: <span id="num-total" class="num">?</span></div>
+
+    <div id="resumen">Sin calcular</div>
+    <div id="detalle"></div>
+  </section>
+
+  <!-- Cambia a solucion.js para ver el ejercicio resuelto -->
+  <script src="ejercicio.js"></script>
+</body>
+</html>

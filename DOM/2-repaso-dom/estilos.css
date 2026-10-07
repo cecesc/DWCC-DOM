@@ -1,0 +1,16 @@
+body { font-family: system-ui, sans-serif; max-width: 640px; margin: 2rem auto; padding: 0 1rem; }
+
+.item { padding: .25rem .5rem; }
+.destacado { background: #ffe08a; }
+.activo { outline: 2px solid #2b6cb0; }
+
+#caja-evento { border: 1px solid #888; padding: 1rem; margin: .5rem 0; }
+
+.boton { margin-right: .5rem; }
+
+/* Usada por #parrafo-mixto para demostrar la diferencia entre textContent e innerText */
+.oculto { display: none; }
+
+img{
+    width: 10%;
+}

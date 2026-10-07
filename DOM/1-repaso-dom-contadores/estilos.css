@@ -1,0 +1,25 @@
+body { font-family: system-ui, sans-serif; max-width: 680px; margin: 2rem auto; padding: 0 1rem; }
+
+.lead { color: #555; }
+
+.card {
+  border: 1px solid #ccd2dd;
+  border-radius: 6px;
+  padding: .5rem .75rem;
+  margin: .5rem 0;
+}
+
+ul.card { list-style: none; }
+
+.fila { padding: .15rem 0; }
+
+.num { font-weight: 700; color: #2b6cb0; }
+
+#panel { margin-top: 2rem; border-top: 2px solid #333; padding-top: 1rem; }
+
+#resumen { margin-top: .75rem; }
+
+#detalle div { padding: .15rem 0; }
+
+/* Usada por #pie para comparar textContent e innerText */
+.oculto { display: none; }

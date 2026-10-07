@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Repaso DOM — Inventario</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+  <h1 id="titulo">Mi inventario</h1>
+
+  <p id="resumen" class="resumen">Sin datos</p>
+
+  <form id="formulario">
+    <input id="nombre" type="text" placeholder="Nombre del objeto" autocomplete="off" />
+    <label><input type="checkbox" id="fragil" disabled /> Frágil</label>
+    <button type="submit" id="btn-anadir">Añadir</button>
+  </form>
+
+  <ul id="objetos">
+    <li class="item" data-peso="2">Mapa</li>
+    <li class="item" data-peso="1">Brújula</li>
+    <li class="item" data-peso="5">Llave</li>
+  </ul>
+
+  <p id="parrafo-mixto">Visible <span class="oculto">INVISIBLE</span> fin</p>
+
+  <p>
+    <button id="alternar" class="boton">Alternar destacados</button>
+    <button id="vaciar" class="boton">Vaciar</button>
+    <button id="quitar-manejador" class="boton">Quitar manejador de "Alternar"</button>
+  </p>
+
+  <div id="caja-evento">
+    <button id="btn-burbuja">Burbuja (padre y botón)</button>
+  </div>
+
+  <p><a id="enlace" href="https://developer.mozilla.org" target="_blank">Ir a MDN</a></p>
+  <p><img id="logo" src="" alt="" /></p>
+
+  <div id="contenedor"></div>
+
+  <!-- Cambia a solucion.js para ver el ejercicio resuelto -->
+  <script src="ejercicio.js"></script>
+</body>
+</html>
+
