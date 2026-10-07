@@ -120,39 +120,38 @@ primero.classList.replace("item-especial", "item");
    5.4 remove()
    5.5 cloneNode(true)
    ------------------------------------------------------------------------- */
-const lista=document.getElementById("objetos")
+
+const lista = document.getElementById("objetos");
 // TODO 5.1: crea un <li class="item"> con texto "Cuerda" y añádelo al final de #objetos.
-const objetos = document.querySelector("#objetos");
+
+//Opción 1 -> createElement
+
 const cuerda = document.createElement("li");
-cuerda.className = "item";
+cuerda.classList.add("item");
 cuerda.textContent = "Cuerda";
-objetos.appendChild(cuerda);
+lista.appendChild(cuerda);
 
-lista.innerHTML=`<li class="item">Cuerda</li>`;
-
-
+//Opción 2 -> innerHTML
+//lista.innerHTML += `<li class="item">Cuerda</li>`;
 
 // TODO 5.2: crea otro <li> con texto "Antorcha" e insértalo antes del primer hijo.
 const antorcha = document.createElement("li");
-antorcha.className = "item";
+antorcha.classList.add("item");
 antorcha.textContent = "Antorcha";
-objetos.insertBefore(antorcha, objetos.firstElementChild);
+lista.insertBefore(antorcha, lista.firstChild);
 
 // TODO 5.3: elimina "Cuerda" usando removeChild desde su padre.
-objetos.removeChild(cuerda);
-
+lista.removeChild(cuerda);
 
 // TODO 5.4: añade un <li> temporal y elimínalo con su propio método remove().
 const temporal = document.createElement("li");
-temporal.className = "item";
+temporal.classList.add("item");
 temporal.textContent = "Temporal";
-objetos.appendChild(temporal);
+lista.appendChild(temporal);
 temporal.remove();
 
 // TODO 5.5: clona el primer item (con hijos) y añade la copia a #contenedor.
-const contenedor = document.querySelector("#contenedor");
-const primItem = objetos.firstElementChild;
-const copia = primItem.cloneNode(true);
+const copia = primerItem.cloneNode(true);
 contenedor.appendChild(copia);
 
 /* -------------------------------------------------------------------------
