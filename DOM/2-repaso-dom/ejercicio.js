@@ -154,6 +154,7 @@ temporal.remove();
 const copia = primerItem.cloneNode(true);
 contenedor.appendChild(copia);
 
+
 /* -------------------------------------------------------------------------
    BLOQUE 6 · Navegación por el DOM
    6.1 parentElement     

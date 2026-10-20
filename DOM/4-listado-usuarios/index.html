@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica: Directorio de Usuaries</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-layout">
+    <header class="app-header">
+        <div class="header-content">
+        <h1>👥 Directorio de Usuaries</h1>
+        <p class="subtitle">Práctica de JavaScript Vanilla: Fetch API y Navegación con Query Params</p>
+        </div>
+
+        <!-- Barra de búsqueda y recarga -->
+        <div class="toolbar">
+        <label for="search-input" class="sr-only">Buscar por nombre o email</label>
+        <input 
+            type="search" 
+            id="search-input" 
+            placeholder="🔍 Buscar por nombre o email..." 
+            autocomplete="off"
+        >
+        <button id="reload-btn" class="btn secondary-btn" title="Recargar usuaries">
+            🔄 Recargar
+        </button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Contenedor para estados: Cargando / Mensajes de error -->
+        <div id="status-container" class="status-message" aria-live="polite"></div>
+
+        <!-- Grid donde se pintarán las tarjetas de les usuaries -->
+        <section id="users-grid" class="users-grid" aria-label="Listado de usuaries">
+        <!-- Las tarjetas se insertarán dinámicamente con JavaScript -->
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>Práctica didáctica de JavaScript Vanilla • Datos de <a href="https://jsonplaceholder.typicode.com/" target="_blank" rel="noopener noreferrer">JSONPlaceholder</a></p>
+    </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
