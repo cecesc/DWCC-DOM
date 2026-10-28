@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boletín de Ejercicios: Flexbox y CSS Grid</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="page-header">
+    <h1>Introducción a CSS Flexbox y Grid</h1>
+    <p>Boletín de ejercicios prácticos de maquetación web.</p>
+  </header>
+
+  <main class="page-content">
+
+    <!-- BLOQUE 1: FLEXBOX -->
+    <section class="exercise-section">
+      <h2>Bloque 1: Ejercicios de Flexbox (1D)</h2>
+
+      <!-- EJERCICIO 1: TOOLBAR -->
+      <article class="exercise-box" id="ejercicio-1">
+        <h3>Ejercicio 1: Barra de Herramientas (Toolbar)</h3>
+        <p class="description">Alinear elementos al centro con gap y empujar las acciones (.toolbar-actions) a la derecha.</p>
+        <div class="workspace-area">
+          <div class="toolbar">
+            <button type="button">Negrita</button>
+            <button type="button">Cursiva</button>
+            <button type="button">Subrayado</button>
+            <div class="toolbar-actions">
+              <button type="button" class="btn-cancel">Descartar</button>
+              <button type="button" class="btn-primary">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- EJERCICIO 2: NUBE DE ETIQUETAS -->
+      <article class="exercise-box" id="ejercicio-2">
+        <h3>Ejercicio 2: Nube de Etiquetas de Filtro</h3>
+        <p class="description">Permitir que las etiquetas salten de línea con flex-wrap y mantengan separación uniforme con gap.</p>
+        <div class="workspace-area">
+          <div class="tag-list">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS Grid</span>
+            <span class="tag">Flexbox</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Responsive Design</span>
+            <span class="tag">Web Standards</span>
+            <span class="tag">Accessibility</span>
+            <span class="tag">DevTools</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- EJERCICIO 3: NEWSLETTER INLINE -->
+      <article class="exercise-box" id="ejercicio-3">
+        <h3>Ejercicio 3: Campo Flexible con Botón Fijo</h3>
+        <p class="description">El input debe absorber todo el ancho disponible (flex: 1) y el botón debe mantener su tamaño sin encogerse (flex-shrink: 0).</p>
+        <div class="workspace-area">
+          <form class="newsletter-form" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Introduce tu correo electrónico..." class="input-email">
+            <button type="submit" class="btn-submit">Suscribirme</button>
+          </form>
+        </div>
+      </article>
+
+      <!-- EJERCICIO 4: TARJETAS CON BOTÓN AL FONDO -->
+      <article class="exercise-box" id="ejercicio-4">
+        <h3>Ejercicio 4: Tarjetas con Pie Anclado al Fondo</h3>
+        <p class="description">Cada tarjeta debe tener dirección de columna y su pie (.card-footer) debe quedar anclado a la base mediante margin-top: auto.</p>
+        <div class="workspace-area">
+          <div class="card-container">
+            <div class="card">
+              <h4>Plan Inicial</h4>
+              <p>Funcionalidades básicas para proyectos individuales en fase inicial.</p>
+              <div class="card-footer">
+                <button type="button">Elegir Plan</button>
+              </div>
+            </div>
+            <div class="card">
+              <h4>Plan Avanzado</h4>
+              <p>Herramientas completas, analítica en tiempo real, integración con bases de datos relacionales y asistencia técnica continua en producción.</p>
+              <div class="card-footer">
+                <button type="button">Elegir Plan</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- EJERCICIO 5: PAGINACIÓN -->
+      <article class="exercise-box" id="ejercicio-5">
+        <h3>Ejercicio 5: Barra de Paginación</h3>
+        <p class="description">Distribuir el botón anterior al inicio, la lista de páginas al centro y el botón siguiente al final.</p>
+        <div class="workspace-area">
+          <nav class="pagination">
+            <button type="button" class="prev-btn">← Anterior</button>
+            <div class="page-numbers">
+              <button type="button">1</button>
+              <button type="button" class="active">2</button>
+              <button type="button">3</button>
+            </div>
+            <button type="button" class="next-btn">Siguiente →</button>
+          </nav>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- BLOQUE 2: CSS GRID -->
+    <section class="exercise-section">
+      <h2>Bloque 2: Ejercicios de CSS Grid (2D)</h2>
+
+      <!-- EJERCICIO 6: AUTO-GRID -->
+      <article class="exercise-box" id="ejercicio-6">
+        <h3>Ejercicio 6: Rejilla Adaptativa sin Media Queries</h3>
+        <p class="description">Definir columnas automáticas con repeat(), auto-fit y minmax(200px, 1fr) con gap de 1rem.</p>
+        <div class="workspace-area">
+          <div class="auto-grid">
+            <div class="grid-item">Elemento 1</div>
+            <div class="grid-item">Elemento 2</div>
+            <div class="grid-item">Elemento 3</div>
+            <div class="grid-item">Elemento 4</div>
+            <div class="grid-item">Elemento 5</div>
+            <div class="grid-item">Elemento 6</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- EJERCICIO 7: FORMULARIO EN REJILLA -->
+      <article class="exercise-box" id="ejercicio-7">
+        <h3>Ejercicio 7: Formulario en Cuadrícula de 2 Columnas</h3>
+        <p class="description">Rejilla de 2 columnas donde los campos marcados como .full-width ocupen ambas columnas.</p>
+        <div class="workspace-area">
+          <form class="form-grid" onsubmit="event.preventDefault();">
+            <div>
+              <label>Nombre</label>
+              <input type="text" placeholder="Ej: Laura">
+            </div>
+            <div>
+              <label>Apellidos</label>
+              <input type="text" placeholder="Ej: Gómez">
+            </div>
+            <div class="full-width">
+              <label>Dirección Postal</label>
+              <input type="text" placeholder="Calle, número, piso...">
+            </div>
+            <div>
+              <label>Ciudad</label>
+              <input type="text" placeholder="Madrid">
+            </div>
+            <div>
+              <label>Código Postal</label>
+              <input type="text" placeholder="28001">
+            </div>
+            <div class="full-width">
+              <label>Comentarios Adicionales</label>
+              <textarea rows="2" placeholder="Observaciones de entrega..."></textarea>
+            </div>
+          </form>
+        </div>
+      </article>
+
+      <!-- EJERCICIO 8: MOSAICO FOTOGRÁFICO -->
+      <article class="exercise-box" id="ejercicio-8">
+        <h3>Ejercicio 8: Mosaico Asimétrico</h3>
+        <p class="description">Rejilla de 4 columnas donde .item-featured ocupa 2 columnas y 2 filas, y .item-wide ocupa 2 columnas.</p>
+        <div class="workspace-area">
+          <div class="gallery-grid">
+            <div class="gallery-item item-featured">Destacado (2x2)</div>
+            <div class="gallery-item">Foto 2</div>
+            <div class="gallery-item">Foto 3</div>
+            <div class="gallery-item item-wide">Foto Ancha (2x1)</div>
+            <div class="gallery-item">Foto 5</div>
+            <div class="gallery-item">Foto 6</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- EJERCICIO 9: GRID TEMPLATE AREAS -->
+      <article class="exercise-box" id="ejercicio-9">
+        <h3>Ejercicio 9: Estructura de Página con Áreas</h3>
+        <p class="description">Definir grid-template-areas para header, sidebar, content y footer, y ajustar a columna única en pantallas menores a 768px.</p>
+        <div class="workspace-area">
+          <div class="site-layout">
+            <header class="layout-header">Cabecera</header>
+            <aside class="layout-sidebar">Barra Lateral</aside>
+            <main class="layout-content">Contenido Principal</main>
+            <footer class="layout-footer">Pie de Página</footer>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- BLOQUE 3: COMBINADO -->
+    <section class="exercise-section">
+      <h2>Bloque 3: Ejercicios Combinados (Grid + Flexbox)</h2>
+
+      <!-- EJERCICIO 10: TARJETAS KPI -->
+      <article class="exercise-box" id="ejercicio-10">
+        <h3>Ejercicio 10: Panel de Tarjetas de Estadísticas (KPIs)</h3>
+        <p class="description">Contenedor en Grid auto-fit y tarjetas internas estructuradas con Flexbox (datos a la izquierda, icono a la derecha).</p>
+        <div class="workspace-area">
+          <div class="kpi-container">
+            <div class="kpi-card">
+              <div class="kpi-data">
+                <span class="kpi-label">Ingresos Netos</span>
+                <strong class="kpi-value">24.500 €</strong>
+              </div>
+              <div class="kpi-icon">📈</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-data">
+                <span class="kpi-label">Nuevos Usuarios</span>
+                <strong class="kpi-value">1.280</strong>
+              </div>
+              <div class="kpi-icon">👥</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-data">
+                <span class="kpi-label">Tasa de Conversión</span>
+                <strong class="kpi-value">3.4%</strong>
+              </div>
+              <div class="kpi-icon">🎯</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-data">
+                <span class="kpi-label">Sesiones Activas</span>
+                <strong class="kpi-value">430</strong>
+              </div>
+              <div class="kpi-icon">⚡</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+  </main>
+
+</body>
+</html>

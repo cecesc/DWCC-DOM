@@ -1,0 +1,18 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid blue;
+
+}
+
+.elemento{
+  border: 2px solid rgb(144, 187, 228);
+
+}
+
+.elemento:nth-child(5){
+  font-weight: bold;
+  margin-left: auto;
+  border: 2px solid lightseagreen;
+
+}

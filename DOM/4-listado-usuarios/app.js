@@ -107,7 +107,9 @@ function renderizarUsuaries(lista) {
 
   // TODO 2.1: Recorre el array 'lista' y pinta cada tarjeta en 'usersGrid'
   // TIP: Puedes usar 'lista.map(crearTarjetaHTML).join("")'
+    usersGrid.innerHTML = lista.map(crearTarjetaHTML).join("");
 }
+
 
 /**
  * TODO 1: Función principal para obtener usuaries desde la API
@@ -131,6 +133,15 @@ async function obtenerUsuaries() {
 
     // TODO 1.5: Llama a renderizarUsuaries() pasándole los datos obtenidos
     // renderizarUsuaries(usuaries);
+    const respuesta = await fetch(API_URL);
+    if (!respuesta.ok) {
+        throw new Error (`Error: ${respuesta.status}: ${respuesta.statusText}`)
+    }
+    const datos = await respuesta.json();
+    usuaries = datos;
+    renderizarUsuaries(usuaries);
+    statusContainer.innerHTML = "";
+
 
     } catch (error) {
     console.error('Error al obtener usuaries:', error);

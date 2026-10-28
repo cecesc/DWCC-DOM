@@ -1,0 +1,407 @@
+/* ========================================================
+   ESTILOS GENERALES Y RESET BASE (NO MODIFICAR)
+   ======================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #0f172a;
+  color: #f8fafc;
+  line-height: 1.5;
+  padding: 2rem 1rem;
+}
+
+.page-header {
+  max-width: 900px;
+  margin: 0 auto 2.5rem;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 1.5rem;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  color: #38bdf8;
+  margin-bottom: 0.5rem;
+}
+
+.page-header p {
+  color: #94a3b8;
+  font-size: 1rem;
+}
+
+.page-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.exercise-section {
+  margin-bottom: 3rem;
+}
+
+.exercise-section h2 {
+  font-size: 1.4rem;
+  color: #818cf8;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.exercise-box {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.exercise-box h3 {
+  font-size: 1.15rem;
+  color: #f1f5f9;
+  margin-bottom: 0.25rem;
+}
+
+.exercise-box p.description {
+  font-size: 0.875rem;
+  color: #94a3b8;
+  margin-bottom: 1rem;
+}
+
+.workspace-area {
+  background-color: #0b1120;
+  border: 1px dashed #475569;
+  border-radius: 6px;
+  padding: 1.25rem;
+  min-height: 80px;
+}
+
+/* Estilos neutrales para controles */
+button {
+  background-color: #334155;
+  color: #f8fafc;
+  border: 1px solid #475569;
+  padding: 0.5rem 0.85rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #475569;
+}
+
+button.btn-primary {
+  background-color: #38bdf8;
+  color: #0f172a;
+  border-color: #38bdf8;
+  font-weight: 600;
+}
+
+button.btn-cancel {
+  background-color: transparent;
+  color: #94a3b8;
+}
+
+input, textarea {
+  background-color: #1e293b;
+  border: 1px solid #475569;
+  color: #f8fafc;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+label {
+  display: block;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin-bottom: 0.25rem;
+}
+
+
+/* ========================================================
+   BLOQUE 1: EJERCICIOS DE FLEXBOX
+   ======================================================== */
+
+/* EJERCICIO 1: Barra de Herramientas (Toolbar)
+   Objetivo:
+   - .toolbar: Contenedor flex horizontal, alineado al centro con gap de 0.75rem.
+   - .toolbar-actions: Empujar al extremo derecho con margin-left: auto y gap de 0.5rem.
+*/
+.toolbar {
+  /* 👉 ESCRIBIR CÓDIGO AQUÍ */
+}
+
+.toolbar-actions {
+  /* 👉 ESCRIBIR CÓDIGO AQUÍ */
+}
+
+
+/* EJERCICIO 2: Nube de Etiquetas de Filtro
+   Objetivo:
+   - .tag-list: Contenedor flex con salto de línea (wrap), gap de 0.5rem y centrado transversal.
+*/
+.tag-list {
+  /* 👉 ESCRIBIR CÓDIGO AQUÍ */
+}
+
+.tag {
+  background-color: #1e293b;
+  color: #38bdf8;
+  border: 1px solid #334155;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+
+
+/* EJERCICIO 3: Campo Flexible con Botón Fijo
+   Objetivo:
+   - .newsletter-form: Flex container con gap de 0.5rem.
+   - .input-email: Debe expandirse ocupando todo el ancho restante (flex: 1).
+   - .btn-submit: No debe encogerse bajo ningún ancho (flex-shrink: 0).
+*/
+.newsletter-form {
+  /* 👉 ESCRIBIR CÓDIGO AQUÍ */
+}
+
+.input-email {
+  /* 👉 ESCRIBIR CÓDIGO AQUÍ */
+}
+
+.btn-submit {
+  /* 👉 ESCRIBIR CÓDIGO AQUÍ */
+  background-color: #38bdf8;
+  color: #0f172a;
+  border: none;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+}
+
+
+/* EJERCICIO 4: Tarjetas con Pie Anclado al Fondo
+   Objetivo:
+   - .card-container: Flex container horizontal con gap de 1.5rem y flex-wrap: wrap.
+   - .card: Dirección en columna (flex-direction: column) y flex base (1 1 240px).
+   - .card-footer: Empujado al fondo con margin-top: auto.
+*/
+.card-container {
+  /* 👉 ESCRIBIR CÓDIGO AQUÍ */
+}
+
+.card {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 1.25rem;
+
+  /* 👉 ESCRIBIR CÓDIGO AQUÍ */
+}
+
+.card h4 {
+  color: #38bdf8;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  margin-bottom: 1.25rem;
+}
+
+.card-footer {
+  /* 👉 ESCRIBIR CÓDIGO AQUÍ */
+}
+
+
+/* EJERCICIO 5: Barra de Paginación
+   Objetivo:
+   - .pagination: Flex container alineado al centro y distribuido con justify-content: space-between.
+   - .page-numbers: Flex container con gap de 0.5rem.
+*/
+.pagination {
+  /* 👉 ESCRIBIR CÓDIGO AQUÍ */
+}
+
+.page-numbers {
+  /* 👉 ESCRIBIR CÓDIGO AQUÍ */
+}
+
+.page-numbers button.active {
+  background-color: #38bdf8;
+  color: #0f172a;
+  font-weight: bold;
+}
+
+
+/* ========================================================
+   BLOQUE 2: EJERCICIOS DE CSS GRID
+   ======================================================== */
+
+/* EJERCICIO 6: Rejilla Adaptativa sin Media Queries
+   Objetivo:
+   - .auto-grid: Display grid, columnas con repeat(), auto-fit y minmax(200px, 1fr), gap de 1rem.
+*/
+.auto-grid {
+  /* 👉 ESCRIBIR CÓDIGO AQUÍ */
+}
+
+.grid-item {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 1.5rem;
+  text-align: center;
+  color: #38bdf8;
+  font-weight: 500;
+}
+
+
+/* EJERCICIO 7: Formulario en Cuadrícula de 2 Columnas
+   Objetivo:
+   - .form-grid: Display grid, 2 columnas iguales (repeat(2, 1fr)) y gap de 1rem.
+   - .full-width: Debe ocupar ambas columnas (grid-column: span 2 o 1 / -1).
+*/
+.form-grid {
+  /* 👉 ESCRIBIR CÓDIGO AQUÍ */
+}
+
+.full-width {
+  /* 👉 ESCRIBIR CÓDIGO AQUÍ */
+}
+
+
+/* EJERCICIO 8: Mosaico Fotográfico Asimétrico
+   Objetivo:
+   - .gallery-grid: Display grid, 4 columnas iguales, grid-auto-rows de 140px y gap de 1rem.
+   - .item-featured: grid-column: span 2 y grid-row: span 2.
+   - .item-wide: grid-column: span 2.
+*/
+.gallery-grid {
+  /* 👉 ESCRIBIR CÓDIGO AQUÍ */
+}
+
+.gallery-item {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.item-featured {
+  background-color: #1e293b;
+  border-color: #38bdf8;
+  color: #38bdf8;
+
+  /* 👉 ESCRIBIR CÓDIGO AQUÍ */
+}
+
+.item-wide {
+  background-color: #243247;
+  color: #cbd5e1;
+
+  /* 👉 ESCRIBIR CÓDIGO AQUÍ */
+}
+
+
+/* EJERCICIO 9: Estructura de Página con Áreas
+   Objetivo:
+   - .site-layout: Display grid, columnas 200px 1fr, filas auto 1fr auto, min-height 400px y gap de 0.75rem.
+   - Definir grid-template-areas para header, sidebar, content y footer.
+   - Ajustar con @media (max-width: 768px) a una sola columna.
+*/
+.site-layout {
+  /* 👉 ESCRIBIR CÓDIGO AQUÍ */
+}
+
+.layout-header {
+  background-color: #1e293b;
+  border: 1px dashed #38bdf8;
+  padding: 0.75rem;
+  font-weight: bold;
+
+  /* 👉 ESCRIBIR grid-area AQUÍ */
+}
+
+.layout-sidebar {
+  background-color: #1e293b;
+  border: 1px dashed #818cf8;
+  padding: 0.75rem;
+
+  /* 👉 ESCRIBIR grid-area AQUÍ */
+}
+
+.layout-content {
+  background-color: #1e293b;
+  border: 1px dashed #f43f5e;
+  padding: 1.5rem;
+  min-height: 180px;
+
+  /* 👉 ESCRIBIR grid-area AQUÍ */
+}
+
+.layout-footer {
+  background-color: #1e293b;
+  border: 1px dashed #64748b;
+  padding: 0.75rem;
+  font-size: 0.85rem;
+  color: #94a3b8;
+
+  /* 👉 ESCRIBIR grid-area AQUÍ */
+}
+
+@media (max-width: 768px) {
+  .site-layout {
+    /* 👉 AJUSTAR ÁREAS Y COLUMNAS A MÓVIL AQUÍ */
+  }
+}
+
+
+/* ========================================================
+   BLOQUE 3: EJERCICIOS COMBINADOS (GRID + FLEXBOX)
+   ======================================================== */
+
+/* EJERCICIO 10: Panel de Tarjetas de Estadísticas (KPIs)
+   Objetivo:
+   - .kpi-container: Display grid con repeat(auto-fit, minmax(180px, 1fr)) y gap de 1rem.
+   - .kpi-card: Flex container con alineación al centro y justify-content: space-between.
+   - .kpi-data: Flex container en columna (flex-direction: column) con gap de 0.25rem.
+*/
+.kpi-container {
+  /* 👉 ESCRIBIR CÓDIGO AQUÍ */
+}
+
+.kpi-card {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 1.25rem;
+
+  /* 👉 ESCRIBIR CÓDIGO AQUÍ */
+}
+
+.kpi-data {
+  /* 👉 ESCRIBIR CÓDIGO AQUÍ */
+}
+
+.kpi-label {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.kpi-value {
+  font-size: 1.35rem;
+  color: #38bdf8;
+}
+
+.kpi-icon {
+  font-size: 1.6rem;
+}

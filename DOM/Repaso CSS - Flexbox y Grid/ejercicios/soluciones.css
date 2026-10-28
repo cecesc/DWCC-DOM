@@ -1,0 +1,160 @@
+/* ========================================================
+   SOLUCIONES OFICIALES: BOLETÍN DE FLEXBOX Y CSS GRID
+   ======================================================== */
+
+/* BLOQUE 1: FLEXBOX */
+
+/* Ejercicio 1: Toolbar */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.toolbar-actions {
+  margin-left: auto; /* Empuja las acciones al extremo derecho */
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Ejercicio 2: Tag Cloud */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Ejercicio 3: Newsletter Inline */
+.newsletter-form {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.input-email {
+  flex: 1;
+}
+
+.btn-submit {
+  flex-shrink: 0;
+}
+
+/* Ejercicio 4: Tarjetas con Pie al Fondo */
+.card-container {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 240px;
+}
+
+.card-footer {
+  margin-top: auto;
+}
+
+/* Ejercicio 5: Paginación */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.page-numbers {
+  display: flex;
+  gap: 0.5rem;
+}
+
+
+/* BLOQUE 2: CSS GRID */
+
+/* Ejercicio 6: Rejilla Adaptativa */
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+/* Ejercicio 7: Formulario en Rejilla */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Ejercicio 8: Mosaico Fotográfico Asimétrico */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 140px;
+  gap: 1rem;
+}
+
+.item-featured {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.item-wide {
+  grid-column: span 2;
+}
+
+/* Ejercicio 9: Estructura de Página con Áreas */
+.site-layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header  header"
+    "sidebar content"
+    "footer  footer";
+  min-height: 400px;
+  gap: 0.75rem;
+}
+
+.layout-header  { grid-area: header; }
+.layout-sidebar { grid-area: sidebar; }
+.layout-content { grid-area: content; }
+.layout-footer  { grid-area: footer; }
+
+@media (max-width: 768px) {
+  .site-layout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "sidebar"
+      "content"
+      "footer";
+  }
+}
+
+
+/* BLOQUE 3: COMBINADO (GRID + FLEXBOX) */
+
+/* Ejercicio 10: Panel de Tarjetas de Estadísticas (KPIs) */
+.kpi-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.kpi-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.kpi-data {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}

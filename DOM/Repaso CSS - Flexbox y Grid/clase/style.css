@@ -1,0 +1,43 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.contenedor {
+  display: grid;
+  height: 70%;
+  width: 70%;
+  border: 2px solid rgb(144, 125, 164);
+  grid-template-areas:
+    "header header header header"
+    "main main main nav"
+    "main main main nav"
+    "main main main nav"
+    "footer footer footer footer ";
+  padding: 1%;
+  gap: 1%;
+}
+
+.contenedor > * {
+  border: 1.5px solid rgb(117, 189, 165);
+}
+
+.header {
+  grid-area: header;
+}
+
+
+.nav {
+  grid-area: nav;
+}
+
+.main {
+  grid-area: main;
+}
+
+.footer {
+  grid-area: footer;
+}
