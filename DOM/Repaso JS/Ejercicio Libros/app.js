@@ -106,11 +106,13 @@ function normalizarLibro(libro) {
   // OBJETIVO: separa por comas, aplica trim y minúsculas a cada etiqueta,
   // y descarta etiquetas vacías. Conserva duplicadas si las hay.
   // COMPRUEBA: " JS, , DOM " se convierte en ["js", "dom"].
+  console.log(etiquetas);
   const etiquetasArray = etiquetas
-  .split(",")
+  .split(",") //["javascript"," fundamentos"," web"]
   .map(etiqueta => etiqueta.trim().toLowerCase())
   .filter(etiqueta => etiqueta !== "");
-
+  console.log(etiquetasArray);
+  
 
   // TODO 06 — Construir un objeto sin modificar el original.
   // TEORÍA: en { ...objeto, propiedad: nuevoValor }, la última propiedad gana.
@@ -128,6 +130,7 @@ function normalizarLibro(libro) {
 };
 console.log(normalizarLibro(librosIniciales[0]));
 console.log(normalizarLibro(librosIniciales[0]) !== librosIniciales[0]);
+console.log(librosIniciales);
 
 
 
@@ -137,6 +140,8 @@ console.log(normalizarLibro(librosIniciales[0]) !== librosIniciales[0]);
   // COMPRUEBA: prepararLibros(librosIniciales)[0].etiquetas es un array.
 function prepararLibros(datos) {
   return datos.map(libro => normalizarLibro(libro));
+  //OTRA FORMA
+  //return datos.map(normalizarLibro);
 }
 console.log(prepararLibros(librosIniciales)[0]);
 
@@ -150,100 +155,164 @@ console.log(prepararLibros(librosIniciales)[0]);
   // COMPRUEBA: resumirTitulo("JavaScript", 4) devuelve "Java…".
 function resumirTitulo(titulo, limite = 24) {
   if (titulo.length > limite) {
-    titulo=titulo.slice(0, limite) 
+    titulo=titulo.slice(0, limite);
     titulo += "...";
+    //OTRA OPCIÓN
+    //return `${titulo.slice(0, limite)}...`;
+    
   }
-  return titulo;
+    return titulo;
+
+  //OTRA OPCIÓN
+    //return titulo.length >limite ? `${titulo.slice(0,limite)}...`: titulo;
 }
 console.log(resumirTitulo("JavaScript",11))
 
 
-function obtenerIniciales(autor) {
-  // TODO 09 — Encadenar split, filter, map, at, toUpperCase y join.
+
+// TODO 09 — Encadenar split, filter, map, at, toUpperCase y join.
   // TEORÍA: at(0) obtiene el primer elemento; join es de ARRAYS, no de strings.
   // OBJETIVO: "  ana   lópez  " → "AL". Para "" devuelve "".
   // PISTA: limpia, separa por espacios, elimina partes vacías, transforma
   // cada palabra en su inicial mayúscula y une sin separador.
-  return "";
+function obtenerIniciales(autor) {
+  return autor
+    .trim()
+    .split(" ")
+    .filter(palabra => palabra !== "")
+    .map(palabra => palabra.at(0).toUpperCase())
+    .join("");
 }
 
-function analizarTexto(texto) {
-  // TODO 10 — startsWith, endsWith e indexOf.
+console.log(obtenerIniciales(librosIniciales[1].autor));
+console.log();
+
+
+
+
+// TODO 10 — startsWith, endsWith e indexOf.
   // TEORÍA: includes responde sí/no; indexOf devuelve la posición o -1.
   // startsWith/endsWith comprueban prefijos/sufijos. Distinguen mayúsculas.
   // OBJETIVO: devuelve { empiezaPorJS, terminaEnPDF, posicionDOM } usando
   // una copia del texto sin espacios exteriores y en minúsculas. Comprueba
   // el prefijo "javascript", el sufijo ".pdf" y la posición de "dom".
   // COMPRUEBA: " JavaScript DOM.pdf " produce true, true y 11 respectivamente.
-  return { empiezaPorJS: false, terminaEnPDF: false, posicionDOM: -1 };
+function analizarTexto(texto) {
+  const textoLimpio =texto.trim().toLowerCase();
+  return {
+    empiezaPorJS: textoLimpio.startsWith("javascript"), 
+    terminaEnPDF: textoLimpio.endsWith(".pdf"),
+    posicionDOM: textoLimpio.indexOf("dom")
+  };
 }
+console.log(analizarTexto("JavaScript DOM.pdf"));
 
-function quitarId(libro) {
-  // TODO 11 — Rest en objetos.
+
+// TODO 11 — Rest en objetos.
   // TEORÍA: { clave, ...resto } separa una propiedad y agrupa las demás.
   // Spread expande; rest recoge. delete, en cambio, modificaría el objeto destino.
   // OBJETIVO: devuelve otro objeto sin id, conservando el original intacto.
   // PISTA: extrae id y devuelve el resto. No uses delete sobre libro.
-  return {};
+function quitarId(libro) {
+  const {id, ...resto}= libro;
+  return resto;
 }
 
-function inspeccionarObjeto(libro) {
-  // TODO 12 — Object.keys, Object.values, Object.entries y Object.hasOwn.
+
+// TODO 12 — Object.keys, Object.values, Object.entries y Object.hasOwn.
   // TEORÍA: producen claves, valores y pares [clave, valor]; hasOwn comprueba
   // si una propiedad pertenece al propio objeto, aunque su valor sea undefined.
   // OBJETIVO: devuelve { claves, valores, entradas, tienePrecio }.
   // COMPRUEBA: para { precio: 0 }, obtienes ["precio"], [0], [["precio", 0]], true.
-  return { claves: [], valores: [], entradas: [], tienePrecio: false };
+function inspeccionarObjeto(libro) {
+    return { 
+      claves: Object.keys(libro), 
+      valores: Object.values(libro), 
+      entradas: Object.entries(libro), 
+      tienePrecio: Object.hasOwn(libro, "precio") 
+    };
 }
+//Prueba
+const libroDePrueba = { precio: 0 };
+const resultado = inspeccionarObjeto(libroDePrueba);
+console.log(resultado);
 
-function obtenerIdioma(libro) {
-  // TODO 13 — Acceso opcional ?. y valor alternativo ??.
+
+
+// TODO 13 — Acceso opcional ?. y valor alternativo ??.
   // TEORÍA: ?. evita fallar ante null/undefined; ?? usa el valor alternativo
   // solo ante null/undefined. || también reemplazaría 0, false y "".
   // OBJETIVO: lee detalles.idioma, o devuelve "Sin especificar" si falta.
   // COMPRUEBA: obtenerIdioma({}) no lanza errores; un idioma "" se conserva.
-  return "Sin especificar";
+function obtenerIdioma(libro) {
+  return libro?.detalles?.idioma ?? "Sin especificar";
 }
 
-function explorarCopia(libro) {
-  // TODO 14 — Referencias y copia superficial.
+
+
+// TODO 14 — Referencias y copia superficial.
   // OBJETIVO: copia libro con spread y devuelve { copia, esOtroObjeto,
   // comparteDetalles }. Compara con !== y ===, sin modificar nada.
   // COMPRUEBA con el primer libro: esOtroObjeto y comparteDetalles son true.
   // Una copia superficial NO independiza detalles. Para datos compatibles,
   // structuredClone hace copia profunda; no hace falta implementarla aquí.
-  return { copia: null, esOtroObjeto: false, comparteDetalles: false };
+function explorarCopia(libro) {
+  const copia = { ...libro };
+  return { 
+    copia: copia, 
+    esOtroObjeto: copia !== libro, 
+    comparteDetalles: copia.detalles === libro.detalles
+  };
 }
 
-function cambiarPrecio(datos, id, nuevoPrecio) {
-  // TODO 15 — Actualización inmutable con map y spread.
+
+
+// TODO 15 — Actualización inmutable con map y spread.
   // OBJETIVO: si nuevoPrecio es un número finito >= 0, devuelve un nuevo array
   // con una copia del libro indicado y su precio actualizado. Los demás libros
   // mantienen su referencia. Si el precio es inválido, devuelve datos sin cambios.
   // PISTA: Number.isFinite, map, comparación por id y spread de objeto.
   // COMPRUEBA: el precio del libro original nunca cambia; 0 es válido.
-  return datos;
+function cambiarPrecio(datos, id, nuevoPrecio) {
+  if (!Number.isFinite(nuevoPrecio) || nuevoPrecio < 0) {
+    return datos;
+  }
+
+  return datos.map(libro => {
+    if (libro.id === id) {
+      return { ...libro, precio: nuevoPrecio };
+    }
+    return libro;
+  });
 }
 
-function buscarPorId(datos, id) {
-  // TODO 16 — find frente a filter.
+
+
+// TODO 16 — find frente a filter.
   // TEORÍA: find devuelve el PRIMER elemento coincidente o undefined;
   // filter devuelve un ARRAY con todas las coincidencias.
   // OBJETIVO: devuelve el libro con ese id. Los identificadores son strings.
-  return undefined;
+function buscarPorId(datos, id) {
+  return datos.find(libros => libros.id === id);
 }
 
-function comprobarDisponibilidad(datos) {
-  // TODO 17 — some y every.
+
+
+// TODO 17 — some y every.
   // TEORÍA: some pregunta "¿alguno?"; every pregunta "¿todos?".
   // OBJETIVO: devuelve { hayDisponibles, todosDisponibles }.
   // COMPRUEBA: para los datos iniciales, true y false.
   // En un array vacío: some da false y every da true. Compruébalo en consola.
-  return { hayDisponibles: false, todosDisponibles: false };
+function comprobarDisponibilidad(datos) {
+  
+  return { 
+    hayDisponibles: datos.some(libro => libro.disponible), 
+    todosDisponibles: datos.every(libro => libro.disponible)};
 }
 
-function ordenarLibros(datos, orden) {
-  // TODO 18 — Ordenación sin mutar.
+
+
+// TODO 18 — Ordenación sin mutar.
   // TEORÍA: sort modifica el array; toSorted devuelve uno nuevo. Sin comparador,
   // los números se ordenan como texto (10 aparece antes que 2).
   // OBJETIVO: "original" conserva el orden; "precio-asc" ordena por precio;
@@ -251,11 +320,18 @@ function ordenarLibros(datos, orden) {
   // PISTA: toSorted((a, b) => ...); resta para números y localeCompare para texto.
   // Alternativa si tu navegador no tiene toSorted: copia con spread y usa sort.
   // COMPRUEBA: precios iniciales ordenados → [15, 20, 25, 30]; datos no cambia.
+function ordenarLibros(datos, orden) {
+  if (orden === "precio-asc") {
+    return datos.toSorted((a, b) => a.precio - b.precio);
+  } else if (orden === "titulo-asc") {
+    return datos.toSorted((a, b) => a.titulo.trim().localeCompare(b.titulo.trim()));
+  }
   return datos;
 }
 
-function filtrarLibros(datos, filtros) {
-  // TODO 19 — filter, includes y condiciones combinadas.
+
+
+// TODO 19 — filter, includes y condiciones combinadas.
   // CONTRATO: filtros = { busqueda: string, soloDisponibles: boolean,
   // precioMaximo: string }. El precio llega como string desde el input.
   // OBJETIVO: busca por título O autor, sin mayúsculas ni espacios exteriores;
@@ -264,19 +340,59 @@ function filtrarLibros(datos, filtros) {
   // No conviertas "" directamente: Number("") es 0. Un límite no vacío debe
   // ser finito y >= 0; si es inválido, devuelve [] para no mostrar datos engañosos.
   // COMPRUEBA: buscar " ANA " y máximo "25" deja solo el libro "1".
-  return datos;
+function filtrarLibros(datos, filtros) {
+  const { busqueda, soloDisponibles, precioMaximo } = filtros;
+  
+  // Validación del precio máximo cuando no es un string vacío
+  let maxPrecioNum = Infinity;
+  if (precioMaximo !== "") {
+    const parsed = Number(precioMaximo);
+    if (!Number.isFinite(parsed) || parsed < 0) {
+      return []; // Límite inválido -> devuelve array vacío
+    }
+    maxPrecioNum = parsed;
+  }
+
+  const busquedaLimpia = busqueda.trim().toLowerCase();
+
+  return datos.filter(libro => {
+    // 1. Filtro por búsqueda (Título O Autor)
+    const cumpleBusqueda = 
+      libro.titulo.toLowerCase().includes(busquedaLimpia) || 
+      libro.autor.toLowerCase().includes(busquedaLimpia);
+
+    // 2. Filtro por disponibilidad (si soloDisponibles es true, libro.disponible debe ser true)
+    const cumpleDisponibilidad = !soloDisponibles || libro.disponible;
+
+    // 3. Filtro por precio máximo
+    const cumpleprecio = libro.precio <= maxPrecioNum;
+
+    return cumpleBusqueda && cumpleDisponibilidad && cumplePrecio;
+  });
 }
 
-function calcularResumen(datos) {
-  // TODO 20 — reduce y acumuladores.
+
+
+// TODO 20 — reduce y acumuladores.
   // TEORÍA: reduce combina elementos en un valor; proporciona un valor inicial
   // para que también funcione con []. Cada vuelta debe devolver el acumulador.
   // OBJETIVO: devuelve { cantidad, total, media }, con media 0 si no hay libros.
   // PISTA: suma los precios con reduce y usa length para la cantidad.
   // COMPRUEBA: datos iniciales → { cantidad: 4, total: 90, media: 22.5 }.
   // Aquí practicamos aritmética; en una app financiera real usaríamos céntimos.
-  return { cantidad: 0, total: 0, media: 0 };
+function calcularResumen(datos) {
+  const cantidad = datos.length;
+  
+  if (cantidad === 0) {
+    return { cantidad: 0, total: 0, media: 0 };
+  }
+
+  const total = datos.reduce((acumulador, libro) => acumulador + libro.precio, 0);
+  const media = total / cantidad;
+  return { cantidad, total, media};
 }
+
+
 
 // Un selector resuelto sirve de ejemplo; completa el resto en el siguiente paso.
 const elementos = {
@@ -291,13 +407,23 @@ const elementos = {
   mensaje: null,
 };
 
-function conectarDOM() {
-  // TODO 21 — querySelector y referencias al DOM.
+
+
+// TODO 21 — querySelector y referencias al DOM.
   // TEORÍA: querySelector devuelve el primer elemento coincidente o null.
   // OBJETIVO: sustituye los null de elementos por sus nodos. Puedes hacerlo
   // arriba o asignar aquí. Los id están en index.html; mensaje corresponde
   // a #mensaje-formulario. No necesitas seleccionar lo mismo en cada render.
   // COMPRUEBA: elementos.catalogo es un HTMLUListElement, no un string.
+function conectarDOM() {
+  elementos.busqueda = document.querySelector("#busqueda");
+  elementos.precioMaximo = document.querySelector("#precio-maximo");
+  elementos.soloDisponibles = document.querySelector("#solo-disponibles");
+  elementos.orden = document.querySelector("#orden");
+  elementos.catalogo = document.querySelector("#catalogo");
+  elementos.resumen = document.querySelector("#resumen");
+  elementos.sinResultados = document.querySelector("#sin-resultados");
+  elementos.mensaje = document.querySelector("#mensaje-formulario")
 }
 
 function crearTarjeta(libro) {
