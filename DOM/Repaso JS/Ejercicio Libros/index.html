@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Repaso de JavaScript · Catálogo de libros</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="contenedor">
+      <header>
+        <p class="antetitulo">Laboratorio de JavaScript</p>
+        <h1>Mi catálogo de libros</h1>
+        <p>La interfaz está preparada. Completa los 32 TODOs de <code>app.js</code> para darle vida.</p>
+      </header>
+
+      <section class="panel" aria-labelledby="titulo-filtros">
+        <h2 id="titulo-filtros">Explora el catálogo</h2>
+        <div class="campos">
+          <label for="busqueda">Título o autor
+            <input id="busqueda" type="search" placeholder="Prueba con JavaScript o Ana" />
+          </label>
+          <label for="precio-maximo">Precio máximo (€)
+            <input id="precio-maximo" type="number" min="0" step="0.01" placeholder="Sin límite" />
+          </label>
+          <label for="orden">Ordenar por
+            <select id="orden">
+              <option value="original">Orden original</option>
+              <option value="precio-asc">Precio: de menor a mayor</option>
+              <option value="titulo-asc">Título: de A a Z</option>
+            </select>
+          </label>
+        </div>
+        <label class="casilla" for="solo-disponibles">
+          <input id="solo-disponibles" type="checkbox" /> Solo disponibles
+        </label>
+      </section>
+
+      <section aria-labelledby="titulo-catalogo">
+        <h2 id="titulo-catalogo">Libros</h2>
+        <p id="resumen" role="status">El resumen aparecerá al completar el ejercicio.</p>
+        <p id="sin-resultados" hidden>No hay resultados.</p>
+        <!-- Cada tarjeta será un <li> creado con JavaScript. -->
+        <ul id="catalogo" class="catalogo"></ul>
+      </section>
+
+      <section class="panel" aria-labelledby="titulo-formulario">
+        <h2 id="titulo-formulario">Añade un libro</h2>
+        <form id="formulario-libro" novalidate>
+          <!-- novalidate permite practicar la validación con JavaScript. -->
+          <div class="campos">
+            <label for="titulo">Título
+              <input id="titulo" name="titulo" required />
+            </label>
+            <label for="autor">Autor
+              <input id="autor" name="autor" required />
+            </label>
+            <label for="precio">Precio (€)
+              <input id="precio" name="precio" type="number" min="0" step="0.01" required />
+            </label>
+            <label for="etiquetas">Etiquetas separadas por comas
+              <input id="etiquetas" name="etiquetas" placeholder="javascript, web" />
+            </label>
+          </div>
+          <label class="casilla" for="disponible">
+            <input id="disponible" name="disponible" type="checkbox" checked /> Disponible
+          </label>
+          <button type="submit">Añadir libro</button>
+          <p id="mensaje-formulario" role="status"></p>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
