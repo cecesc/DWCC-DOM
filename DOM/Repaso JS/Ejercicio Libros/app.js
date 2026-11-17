@@ -245,8 +245,12 @@ console.log(resultado);
   // OBJETIVO: lee detalles.idioma, o devuelve "Sin especificar" si falta.
   // COMPRUEBA: obtenerIdioma({}) no lanza errores; un idioma "" se conserva.
 function obtenerIdioma(libro) {
-  return libro?.detalles?.idioma ?? "Sin especificar";
+  return libro.detalles?.idioma ?? "Sin especificar";
 }
+libros.forEach((libro)=>{
+  console.log(libro.id);
+  console.log(obtenerIdioma(libro));
+});
 
 
 
@@ -260,10 +264,11 @@ function explorarCopia(libro) {
   const copia = { ...libro };
   return { 
     copia: copia, 
-    esOtroObjeto: copia !== libro, 
+    esOtroObjeto: copia === libro, 
     comparteDetalles: copia.detalles === libro.detalles
   };
 }
+console.log(explorarCopia(librosIniciales[0]));
 
 
 
@@ -285,7 +290,7 @@ function cambiarPrecio(datos, id, nuevoPrecio) {
     return libro;
   });
 }
-
+console.log(cambiarPrecio(librosIniciales,"1",1));
 
 
 // TODO 16 — find frente a filter.
@@ -365,7 +370,7 @@ function filtrarLibros(datos, filtros) {
     const cumpleDisponibilidad = !soloDisponibles || libro.disponible;
 
     // 3. Filtro por precio máximo
-    const cumpleprecio = libro.precio <= maxPrecioNum;
+    const cumplePrecio = libro.precio <= maxPrecioNum;
 
     return cumpleBusqueda && cumpleDisponibilidad && cumplePrecio;
   });
@@ -426,8 +431,9 @@ function conectarDOM() {
   elementos.mensaje = document.querySelector("#mensaje-formulario")
 }
 
-function crearTarjeta(libro) {
-  // TODO 22 — Crear elementos y separar datos de presentación.
+
+
+// TODO 22 — Crear elementos y separar datos de presentación.
   // OBJETIVO: desestructura el libro y crea un <li> con clase "tarjeta".
   // Crea un <h3>, párrafos y un botón usando document.createElement.
   // PISTA: classList.add y textContent. No uses innerHTML con datos de usuarios.
@@ -439,10 +445,53 @@ function crearTarjeta(libro) {
   // El botón tendrá texto "Eliminar", type="button" y dataset.id = id.
   // Usa append para introducir los nodos en el <li> y devuelve ese <li>.
   // COMPRUEBA: un título "<img src=x>" se muestra como texto, nunca como HTML.
-  return null;
+function crearTarjeta(libro) {
+  const { id, titulo, autor, precio, disponible, etiquetas, editorial, slug } = libro;
+
+  const li = document.createElement("li");
+  const h3 = document.createElement("h3");
+  const pAutor = document.createElement("p");
+  const pPrecio = document.createElement("p");
+  const pEditorial = document.createElement("p");
+  const pIdioma = document.createElement("p");
+  const pDisponible = document.createElement("p");
+  const pSlug = document.createElement("p");
+  const pLongitud = document.createElement("p");
+  const boton = document.createElement("button");
+
+  li.classList.add("tarjeta");
+
+  h3.textContent = resumirTitulo(titulo);
+  pAutor.textContent = "Autor: " + obtenerIniciales(autor);
+  pPrecio.textContent = "Precio: " + precio + " €";
+  pEditorial.textContent = "Editorial: " + editorial;
+  pIdioma.textContent = "Idioma: " + obtenerIdioma(libro);
+  pDisponible.textContent = disponible ? "Disponible" : "No disponible";
+  pEtiquetas.textContent = "Etiquetas: " + etiquetas.join(" · ");
+  pSlug.textContent = "Slug: " + slug;
+  pLongitud.textContent = "Longitud del título: " + titulo.length;
+
+  boton.textContent="Eliminar";
+  boton.type="button";
+  boton.dataset.id= id
+
+  li.append(
+    h3,
+    pAutor,
+    pPrecio,
+    pEditorial,
+    pIdioma,
+    pDisponible,
+    pSlug,
+    pLongitud,
+    boton
+    );
+
+  return li;
 }
 
-function renderizarLibros(datos) {
+
+
   // TODO 24 — Vaciar y reconstruir el listado; hidden y classList.
   // TEORÍA: replaceChildren() vacía un nodo; append acepta varios nodos.
   // OBJETIVO: crea tarjetas con map, reemplaza las anteriores y muestra
@@ -450,13 +499,23 @@ function renderizarLibros(datos) {
   // PISTA: puedes pasar un array de nodos usando spread como argumentos.
   // Activa la clase "sin-libros" en el catálogo con classList.toggle(clase, condición).
   // COMPRUEBA: ejecutar dos veces el render no duplica tarjetas.
+function renderizarLibros(datos) {
+  const tarjetas = datos.map(libro => crearTarjeta(libro));
+  elementos.catalogo.replaceChildren(...tarjetas);
+  elementos.sinResultados.hidden =datos.length !==0;
+  elementos.catalogo.classList.toggle("sin-libros", datos.length === 0);
 }
 
-function renderizarResumen(datos) {
-  // TODO 25 — Desestructuración y template literals en el DOM.
+
+// TODO 25 — Desestructuración y template literals en el DOM.
   // OBJETIVO: usa calcularResumen y muestra cantidad, total y media en #resumen.
   // PISTA: desestructura el resultado, usa `${expresion}` y toFixed(2) en importes.
   // toFixed devuelve un string: úsalo para presentar, no para seguir sumando.
+function renderizarResumen(datos) {
+  const {cantidad, total, media} = calcularResumen(datos);
+  elementos.resumen.textContent =
+    `Cantidad: ${cantidad} | Total: ${total.toFixed(2)} € | Media: ${media.toFixed(2)} €`;
+  
 }
 
 function actualizarVista() {
