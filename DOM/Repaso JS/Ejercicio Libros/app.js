@@ -279,10 +279,8 @@ console.log(explorarCopia(librosIniciales[0]));
   // PISTA: Number.isFinite, map, comparación por id y spread de objeto.
   // COMPRUEBA: el precio del libro original nunca cambia; 0 es válido.
 function cambiarPrecio(datos, id, nuevoPrecio) {
-  if (!Number.isFinite(nuevoPrecio) || nuevoPrecio < 0) {
-    return datos;
-  }
-
+  if (!Number.isFinite(nuevoPrecio) || nuevoPrecio < 0) return datos;
+  
   return datos.map(libro => {
     if (libro.id === id) {
       return { ...libro, precio: nuevoPrecio };
@@ -333,6 +331,8 @@ function ordenarLibros(datos, orden) {
   }
   return datos;
 }
+console.log(ordenarLibros(librosIniciales, "patata"));
+
 
 
 
@@ -375,6 +375,8 @@ function filtrarLibros(datos, filtros) {
     return cumpleBusqueda && cumpleDisponibilidad && cumplePrecio;
   });
 }
+const objFiltro = {busqueda :"Ana", soloDisponibles: true, maxPrecioNum: 25};
+console.log(filtrarLibros(librosIniciales, objFiltro));
 
 
 
@@ -518,12 +520,13 @@ function renderizarResumen(datos) {
   
 }
 
-function actualizarVista() {
-  // TODO 26 — Conectar el flujo completo.
+// TODO 26 — Conectar el flujo completo.
   // OBJETIVO: lee value de búsqueda/precio/orden y checked del checkbox;
   // construye filtros, filtra libros, ordena el resultado y pásalo a ambos renders.
   // TEORÍA: los inputs dan strings con value; checked proporciona un booleano.
   // Cada actualización parte de libros, no del último resultado filtrado.
+function actualizarVista() {
+  
 }
 
 function leerFormulario(formulario) {
