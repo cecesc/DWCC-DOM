@@ -403,7 +403,6 @@ function calcularResumen(datos) {
 
 // Un selector resuelto sirve de ejemplo; completa el resto en el siguiente paso.
 const elementos = {
-  formulario: document.querySelector("#formulario-libro"),
   busqueda: null,
   precioMaximo: null,
   soloDisponibles: null,
@@ -423,6 +422,7 @@ const elementos = {
   // a #mensaje-formulario. No necesitas seleccionar lo mismo en cada render.
   // COMPRUEBA: elementos.catalogo es un HTMLUListElement, no un string.
 function conectarDOM() {
+  elementos.formulario =document.querySelector("#formulario-libro"),
   elementos.busqueda = document.querySelector("#busqueda");
   elementos.precioMaximo = document.querySelector("#precio-maximo");
   elementos.soloDisponibles = document.querySelector("#solo-disponibles");
