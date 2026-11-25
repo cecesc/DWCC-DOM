@@ -460,6 +460,7 @@ function crearTarjeta(libro) {
   const pSlug = document.createElement("p");
   const pLongitud = document.createElement("p");
   const boton = document.createElement("button");
+  const pEtiquetas = document.createElement("p");
 
   li.classList.add("tarjeta");
 
@@ -484,6 +485,7 @@ function crearTarjeta(libro) {
     pEditorial,
     pIdioma,
     pDisponible,
+    pEtiquetas,
     pSlug,
     pLongitud,
     boton
@@ -526,26 +528,69 @@ function renderizarResumen(datos) {
   // TEORÍA: los inputs dan strings con value; checked proporciona un booleano.
   // Cada actualización parte de libros, no del último resultado filtrado.
 function actualizarVista() {
-  
-}
+  const filtros = {
+    busqueda: elementos.busqueda.value,
+    soloDisponibles: elementos.soloDisponibles.checked,
+    precioMaximo: elementos.precioMaximo.value
+  };
 
-function leerFormulario(formulario) {
-  // TODO 27 — Leer campos de un formulario.
+  const orden = elementos.orden.value;
+  const visibles = ordenarLibros(filtrarLibros(libros, filtros), orden);
+  renderizarLibros(visibles);
+  renderizarResumen(visibles);
+}
+actualizarVista();
+
+
+
+// TODO 27 — Leer campos de un formulario.
   // OBJETIVO: devuelve { titulo, autor, precio, etiquetas, disponible }.
   // PISTA: formulario.elements.namedItem("titulo").value; usa checked para
   // disponible. Conserva precio como STRING aquí para poder detectar el vacío.
-  // No normalices etiquetas todavía: normalizarLibro lo hará tras validar.
-  return {};
+  // No normalices etiquetas todavía: normalizarLibro lo hará tras validar.function leerFormulario(formulario) {
+  function leerFormulario(formulario) {
+  return {
+    titulo: formulario.elements.namedItem("titulo").value,
+    autor: formulario.elements.namedItem("autor").value,
+    precio: formulario.elements.namedItem("precio").value,
+    etiquetas: formulario.elements.namedItem("etiquetas").value,
+    disponible: formulario.elements.namedItem("disponible").checked
+  };
 }
 
-function validarLibro(datos) {
-  // TODO 28 — Validar antes de guardar.
+
+// TODO 28 — Validar antes de guardar.
   // OBJETIVO: devuelve un mensaje si título/autor quedan vacíos al aplicar trim,
   // si el precio está vacío, no es finito o es negativo. Devuelve "" si todo vale.
   // PISTA: comprueba el string vacío ANTES de Number(datos.precio), después
   // usa Number.isFinite. No rechaces 0 por confundirlo con false.
   // COMPRUEBA: "", "   ", "hola", "Infinity" y "-1" no son precios válidos; "0" sí.
-  return "Pendiente de implementar la validación.";
+function validarLibro(datos) {
+function validarLibro(datos) {
+  if (datos.titulo.trim() === "") {
+    return "El título no puede estar vacío.";
+  }
+
+  if (datos.autor.trim() === "") {
+    return "El autor no puede estar vacío.";
+  }
+
+  if (datos.precio === "") {
+    return "El precio es obligatorio.";
+  }
+
+  const precio = Number(datos.precio);
+
+  if (!Number.isFinite(precio)) {
+    return "El precio debe ser un número válido.";
+  }
+
+  if (precio < 0) {
+    return "El precio no puede ser negativo.";
+  }
+
+  return "";
+}
 }
 
 function registrarEventos() {
@@ -555,6 +600,15 @@ function registrarEventos() {
   // Todos llaman a actualizarVista. El catálogo escucha click y llama a
   // manejarClickCatalogo. Registra los listeners una sola vez, no al renderizar.
   // El listener de submit ya está preparado al final como ejemplo.
+  elementos.busqueda.addEventListener("input", actualizarVista);
+  elementos.precioMaximo.addEventListener("input", actualizarVista);
+  elementos.soloDisponibles.addEventListener("change", actualizarVista);
+  elementos.orden.addEventListener("change", actualizarVista);
+  elementos.catalogo.addEventListener("click", manejarClickCatalogo);
+  elementos.formulario.addEventListener("submit", (evento) => {
+    evento.preventDefault();
+    manejarEnvio(evento);
+  });
 }
 
 function manejarEnvio(evento) {
@@ -587,6 +641,10 @@ function iniciar() {
   // registra los eventos y actualiza la vista. Hazlo una sola vez.
   // TEORÍA: defer en el <script> permite que el HTML exista al ejecutar este archivo.
   // COMPRUEBA: 4 tarjetas, total 90.00 y media 22.50 al recargar la página.
+conectarDOM();
+  libros = prepararLibros(libros);
+  registrarEventos();
+  actualizarVista();
 }
 
 // Ejemplo resuelto de evento: evita la recarga incluso mientras faltan los TODOs.
